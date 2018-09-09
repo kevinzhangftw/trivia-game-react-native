@@ -1,12 +1,12 @@
 import { createSwitchNavigator } from 'react-navigation'
-import HomeScreen from '../components/HomeScreen'
-import QuizScreen from '../components/QuizScreen'
+import HomeScreenContainer from '../components/HomeScreen/HomeScreenContainer'
+import QuizNavigator from './QuizNavigator'
 import ResultScreen from '../components/ResultScreen'
 
 export default createSwitchNavigator(
   {
-    Home: HomeScreen,
-    Quiz: QuizScreen,
+    Home: HomeScreenContainer,
+    Quiz: QuizNavigator,
     Result: ResultScreen
   },
   {
