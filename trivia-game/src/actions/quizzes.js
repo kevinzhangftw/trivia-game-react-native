@@ -1,6 +1,14 @@
 export const FETCH_QUIZZES = 'FETCH_QUIZZES'
 export const REQUEST_QUIZZES = 'REQUEST_QUIZZES'
 export const RECEIVE_QUIZZES = 'RECEIVE_QUIZZES'
+export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
+
+export const setCurrentIndex = prevIndex => {
+  return {
+    type: SET_CURRENT_INDEX,
+    currentIndex: prevIndex++
+  }
+}
 
 const requestQuizzes = () => {
   return {

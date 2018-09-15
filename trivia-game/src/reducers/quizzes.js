@@ -1,15 +1,22 @@
 import {
   REQUEST_QUIZZES,
-  RECEIVE_QUIZZES
+  RECEIVE_QUIZZES,
+  SET_CURRENT_INDEX
 } from '../actions/quizzes'
 
 const initialState = {
   isFetching: false,
-  quizzes: []
+  quizzes: [],
+  currentIndex: 0
 }
 
 const quizzes = (state = initialState, action) => {
   switch (action.type) {
+    case SET_CURRENT_INDEX:
+      return {
+        ...state,
+        currentIndex: action.currentIndex
+      }
     case REQUEST_QUIZZES:
       return {
         ...state,

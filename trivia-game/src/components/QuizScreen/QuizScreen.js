@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,33 +23,29 @@ const styles = StyleSheet.create({
   }
 })
 
-class QuizScreen1 extends React.Component {
+class QuizScreen extends React.Component {
   render () {
-    const { quizzes } = this.props
-    const quiz1 = quizzes[0]
+    const { quiz, onSubmit } = this.props
+    const handleSubmit = onSubmit
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>{quiz1.category}</Text>
+        <Text style={styles.header}>{quiz.category}</Text>
         <Button
           title='yes'
-          onPress={() => this.props.navigation.navigate('Quiz2')}
+          onPress={handleSubmit(true)}
         />
         <Button
           title='no'
-          onPress={() => this.props.navigation.navigate('Quiz2')}
+          onPress={handleSubmit(false)}
         />
       </View>
     )
   }
 }
 
-QuizScreen1.propTypes = {
-  navigation: PropTypes.object.isRequired
+QuizScreen.propTypes = {
+  quiz: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return ({
-    quizzes: state.quizzes
-  })
-}
-export default connect(mapStateToProps)(QuizScreen1)
+export default QuizScreen
