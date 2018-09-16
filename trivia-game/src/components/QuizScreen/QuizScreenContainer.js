@@ -4,13 +4,19 @@ import PropTypes from 'prop-types'
 import LoadingScreen from '../LoadingScreen'
 import QuizScreen from './QuizScreen'
 import { setCurrentIndex } from '../../actions/quizzes'
+import { saveToResult } from '../../actions/result'
 
 class QuizScreenContainer extends React.Component {
-  handleSubmit = answer => {
-    const prevIndex = this.props.currentIndex
+  goToNextQuiz = currentIndex => {
+    const prevIndex = currentIndex
     this.props.setCurrentIndex(prevIndex)
-    // dispatch(tallyAnswer(answer))
-    // navigation.navigate(nextQuiz(), quizParams)
+  }
+
+  handleSubmit = input => {
+    const { quizzes, currentIndex } = this.props
+    const quiz = quizzes[currentIndex]
+    this.props.saveToResult(quiz, input)
+    this.goToNextQuiz(currentIndex)
   }
 
   render () {
@@ -23,7 +29,7 @@ class QuizScreenContainer extends React.Component {
         <QuizScreen
           quiz={quizzes[currentIndex]}
           currentIndex={currentIndex}
-          onSubmit={(answer) => this.handleSubmit(answer)}
+          onSubmit={(input) => this.handleSubmit(input)}
         />
       )
     }
@@ -37,7 +43,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentIndex: prevIndex => dispatch(setCurrentIndex(prevIndex))
+  setCurrentIndex: prevIndex => dispatch(setCurrentIndex(prevIndex)),
+  saveToResult: (quiz, input) => dispatch(saveToResult(quiz, input))
 })
 
 QuizScreenContainer.propTypes = {
@@ -45,7 +52,8 @@ QuizScreenContainer.propTypes = {
   quizzes: PropTypes.arrayOf(PropTypes.object),
   navigation: PropTypes.object,
   currentIndex: PropTypes.number,
-  setCurrentIndex: PropTypes.func
+  setCurrentIndex: PropTypes.func,
+  saveToResult: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizScreenContainer)

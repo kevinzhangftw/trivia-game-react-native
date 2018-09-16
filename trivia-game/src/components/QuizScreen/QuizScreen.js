@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
     margin: 20
   },
   answerButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around'
+    flexDirection: 'row'
   },
   pagination: {
     fontSize: 14,
@@ -52,12 +51,12 @@ class QuizScreen extends React.Component {
         <Text style={styles.pagination}>{++currentIndex} out of 10</Text>
         <View style={styles.answerButtons}>
           <Button
-            title='YES'
-            onPress={() => onSubmit(true)}
+            title='TRUE'
+            onPress={() => onSubmit('True')}
           />
           <Button
-            title='NO'
-            onPress={() => onSubmit(false)}
+            title='FALSE'
+            onPress={() => onSubmit('False')}
           />
         </View>
       </View>
