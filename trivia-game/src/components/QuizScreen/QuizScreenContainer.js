@@ -12,16 +12,21 @@ class QuizScreenContainer extends React.Component {
     this.props.setCurrentIndex(prevIndex)
   }
 
+  shouldNavigate = (currentIndex, totalCount) => {
+    return currentIndex === (totalCount - 1)
+  }
+
   handleSubmit = input => {
-    const { quizzes, currentIndex } = this.props
+    const { quizzes, currentIndex, navigation } = this.props
     const quiz = quizzes[currentIndex]
     this.props.saveToResult(quiz, input)
-    this.goToNextQuiz(currentIndex)
+    this.shouldNavigate(currentIndex, quizzes.length)
+      ? navigation.navigate('Result')
+      : this.goToNextQuiz(currentIndex)
   }
 
   render () {
-    const { isFetching, quizzes, currentIndex, navigation } = this.props
-
+    const { isFetching, quizzes, currentIndex } = this.props
     if (isFetching) {
       return (<LoadingScreen />)
     } else {

@@ -8,8 +8,8 @@ const getFeedback = (isCorrect, question) => {
 
 export const saveToResult = (quiz, input) => {
   const isCorrect = verifyAnswer(quiz, input)
-  console.log('result action isCorrect:', isCorrect)
-  console.log('result action getFeedback:', getFeedback(isCorrect, quiz.question))
+  // console.log('result action isCorrect:', isCorrect)
+  // console.log('result action getFeedback:', getFeedback(isCorrect, quiz.question))
   return {
     type: SAVE_TO_RESULT,
     isCorrect: isCorrect,
