@@ -22,6 +22,7 @@ class QuizScreenContainer extends React.Component {
       return (
         <QuizScreen
           quiz={quizzes[currentIndex]}
+          currentIndex={currentIndex}
           onSubmit={(answer) => this.handleSubmit(answer)}
         />
       )
