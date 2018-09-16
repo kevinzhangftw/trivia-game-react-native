@@ -24,19 +24,21 @@ const styles = StyleSheet.create({
 })
 
 class QuizScreen extends React.Component {
+  handleSubmit = response => this.props.onSubmit(response)
+
   render () {
     const { quiz, onSubmit } = this.props
-    const handleSubmit = onSubmit
+
     return (
       <View style={styles.container}>
         <Text style={styles.header}>{quiz.category}</Text>
         <Button
           title='yes'
-          onPress={handleSubmit(true)}
+          onPress={() => onSubmit(true)}
         />
         <Button
           title='no'
-          onPress={handleSubmit(false)}
+          onPress={() => onSubmit(false)}
         />
       </View>
     )

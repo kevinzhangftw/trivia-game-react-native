@@ -6,7 +6,7 @@ export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
 export const setCurrentIndex = prevIndex => {
   return {
     type: SET_CURRENT_INDEX,
-    currentIndex: prevIndex++
+    currentIndex: ++prevIndex
   }
 }
 
