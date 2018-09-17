@@ -1,7 +1,8 @@
 import {
   REQUEST_QUIZZES,
   RECEIVE_QUIZZES,
-  SET_CURRENT_INDEX
+  SET_CURRENT_INDEX,
+  RESET_QUIZZES
 } from '../actions/quizzes'
 
 const initialState = {
@@ -12,6 +13,8 @@ const initialState = {
 
 const quizzes = (state = initialState, action) => {
   switch (action.type) {
+    case RESET_QUIZZES:
+      return initialState
     case SET_CURRENT_INDEX:
       return {
         ...state,

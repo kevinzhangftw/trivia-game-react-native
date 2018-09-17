@@ -2,9 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import ResultScreen from './ResultScreen'
+import { resetQuizzes } from '../../actions/quizzes'
 
 class ResultScreenContainer extends React.Component {
-  handlePlayAgain = () => this.props.navigation.navigate('Home')
+  handlePlayAgain = () => {
+    this.props.dispatch(resetQuizzes())
+    this.props.navigation.navigate('Home')
+  }
   render () {
     const { correctCount, feedbackList } = this.props
     return (

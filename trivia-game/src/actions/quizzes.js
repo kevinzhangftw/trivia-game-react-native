@@ -2,6 +2,13 @@ export const FETCH_QUIZZES = 'FETCH_QUIZZES'
 export const REQUEST_QUIZZES = 'REQUEST_QUIZZES'
 export const RECEIVE_QUIZZES = 'RECEIVE_QUIZZES'
 export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
+export const RESET_QUIZZES = 'RESET_QUIZZES'
+
+export const resetQuizzes = () => {
+  return {
+    type: RESET_QUIZZES
+  }
+}
 
 export const setCurrentIndex = prevIndex => {
   return {
