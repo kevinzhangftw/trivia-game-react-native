@@ -3,12 +3,19 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import ResultScreen from './ResultScreen'
 import { resetQuizzes } from '../../actions/quizzes'
+import { resetResult } from '../../actions/result'
 
 class ResultScreenContainer extends React.Component {
+  resetStore = () => {
+    this.props.resetQuizzes()
+    this.props.resetResult()
+  }
+
   handlePlayAgain = () => {
-    this.props.dispatch(resetQuizzes())
+    this.resetStore()
     this.props.navigation.navigate('Home')
   }
+
   render () {
     const { correctCount, feedbackList } = this.props
     return (
@@ -24,7 +31,9 @@ class ResultScreenContainer extends React.Component {
 ResultScreenContainer.propTypes = {
   navigation: PropTypes.object.isRequired,
   correctCount: PropTypes.number.isRequired,
-  feedbackList: PropTypes.arrayOf(PropTypes.string).isRequired
+  feedbackList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  resetQuizzes: PropTypes.func.isRequired,
+  resetResult: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -32,4 +41,9 @@ const mapStateToProps = state => ({
   feedbackList: state.result.feedbackList
 })
 
-export default connect(mapStateToProps)(ResultScreenContainer)
+const mapDispatchToProps = dispatch => ({
+  resetQuizzes: () => dispatch(resetQuizzes()),
+  resetResult: () => dispatch(resetResult())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultScreenContainer)

@@ -1,4 +1,4 @@
-import { SAVE_TO_RESULT } from '../actions/result'
+import { SAVE_TO_RESULT, RESET_RESULT } from '../actions/result'
 
 const initialState = {
   correctCount: 0,
@@ -7,9 +7,9 @@ const initialState = {
 
 const result = (state = initialState, action) => {
   switch (action.type) {
+    case RESET_RESULT:
+      return initialState
     case SAVE_TO_RESULT:
-      // console.log('result reducer correctCount:', state.correctCount)
-      // console.log('result reducer feedbacklist:', state.feedbackList)
       return {
         ...state,
         correctCount: action.isCorrect ? ++state.correctCount : state.correctCount,

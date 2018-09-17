@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
 const LoadingScreen = () => (
   <View style={styles.container}>
     <ActivityIndicator size='small' color='black' />

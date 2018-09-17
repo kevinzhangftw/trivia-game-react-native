@@ -7,9 +7,9 @@ import HomeScreen from './HomeScreen'
 
 class HomeScreenContainer extends React.Component {
   render () {
-    const { navigation, dispatch } = this.props
+    const { navigation } = this.props
     const handleBeginQuiz = () => {
-      dispatch(fetchQuizzes(10, 'hard', 'boolean'))
+      this.props.fetchQuizzes(10, 'hard', 'boolean')
       navigation.navigate('Quiz')
     }
 
@@ -19,9 +19,17 @@ class HomeScreenContainer extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchQuizzes: (amount, difficulty, type) => dispatch(fetchQuizzes(amount, difficulty, type))
+})
+
 HomeScreenContainer.propTypes = {
   navigation: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  fetchQuizzes: PropTypes.func.isRequired
 }
 
-export default connect()(HomeScreenContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreenContainer)
