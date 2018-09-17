@@ -5,7 +5,7 @@ const initialState = {
   feedbackList: []
 }
 
-const quizzes = (state = initialState, action) => {
+const result = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_TO_RESULT:
       // console.log('result reducer correctCount:', state.correctCount)
@@ -20,4 +20,4 @@ const quizzes = (state = initialState, action) => {
   }
 }
 
-export default quizzes
+export default result

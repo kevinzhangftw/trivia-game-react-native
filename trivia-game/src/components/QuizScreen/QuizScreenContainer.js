@@ -18,8 +18,7 @@ class QuizScreenContainer extends React.Component {
 
   handleSubmit = input => {
     const { quizzes, currentIndex, navigation } = this.props
-    const quiz = quizzes[currentIndex]
-    this.props.saveToResult(quiz, input)
+    this.props.saveToResult(quizzes[currentIndex], input)
     this.shouldNavigate(currentIndex, quizzes.length)
       ? navigation.navigate('Result')
       : this.goToNextQuiz(currentIndex)
