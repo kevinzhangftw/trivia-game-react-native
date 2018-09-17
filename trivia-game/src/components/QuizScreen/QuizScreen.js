@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
     margin: 20
   },
   answerButtons: {
-    flexDirection: 'row'
+    width: 250,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   pagination: {
     fontSize: 14,
