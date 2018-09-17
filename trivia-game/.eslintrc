@@ -1,0 +1,57 @@
+{
+    "parser": "babel-eslint",
+        "extends": [
+            "standard",
+            "standard-react",
+            "plugin:jest/recommended"
+        ],
+            "plugins": [
+                "babel",
+                "react",
+                "promise",
+                "jest"
+            ],
+                "env": {
+        "browser": true
+    },
+    "globals": {
+        "__DEV__": false,
+            "__TEST__": false,
+                "__STAGING__": false,
+                    "__PROD__": false
+    },
+    "rules": {
+        "key-spacing": 0,
+            "jsx-quotes": [
+                2,
+                "prefer-single"
+            ],
+                "max-len": [
+                    2,
+                    120,
+                    2
+                ],
+                    "object-curly-spacing": [
+                        2,
+                        "always"
+                    ],
+                        "react/jsx-no-bind": 2,
+                            "no-unused-vars": [
+                                2,
+                                {
+                                    "args": "none",
+                                    "vars": "all",
+                                    "ignoreRestSiblings": true
+                                }
+                            ],
+                                "eqeqeq": [
+                                    2,
+                                    "smart"
+                                ],
+                                    "jest/no-disabled-tests": "warn",
+                                        "jest/no-focused-tests": "error",
+                                            "jest/no-identical-title": "error",
+                                                "jest/prefer-to-have-length": "warn",
+                                                    "jest/valid-expect": "error"
+    }
+}
