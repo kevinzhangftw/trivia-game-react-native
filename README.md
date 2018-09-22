@@ -1,1 +1,3 @@
-# code-challenge-kai-zhang
+# To Run
+1. yarn 
+2. yarn start
